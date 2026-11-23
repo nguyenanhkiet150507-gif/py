@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Làng Python Vui Vẻ</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="star">⭐ <span id="stars">0</span></div>
+<header><span class="mascot">🐱</span><h1>Làng Python Vui Vẻ</h1><p class="sub">Cùng Mèo Py khám phá thế giới lập trình nhé!</p></header>
+<nav id="nav">
+<button data-t="s1" class="on">📦 Hộp Biến</button>
+<button data-t="s2">🪄 Phù Phép Đổi Kiểu</button>
+<button data-t="s3">🧮 Máy Tính Thần Kỳ</button>
+<button data-t="s4">🏆 Đố Vui</button>
+<button data-t="s5">💻 Phòng Code</button>
+</nav>
+<main>
+
+<section id="s1" class="on">
+<div class="card"><span class="tag">📄 Bài tập gốc: BT1.py</span><br><button class="btn b" onclick="openCode('BT1.py')">💻 Xem &amp; chạy code BT1.py</button></div>
+<div class="card"><h3>📦 Biến là chiếc hộp có dán tên</h3>
+<p class="hint">Biến giống như hộp đựng đồ. Mỗi hộp có tên và chứa một thứ bên trong. Hãy điền thông tin của bạn nhé!</p>
+<label>Tên<input type="text" id="ten" value="Bé Na"></label>
+<label>Tuổi<input type="number" id="tuoi" value="7"></label>
+<label>Điểm TB<input type="number" id="diem" step="0.1" value="8.5"></label>
+<label>Đang học?<select id="hoc" style="font:inherit;padding:9px;border-radius:14px"><option value="1">Đúng</option><option value="0">Sai</option></select></label><br>
+<button class="btn" onclick="mkBoxes()">Tạo hộp biến ✨</button>
+<div class="boxes" id="boxes"></div></div>
+
+<div class="card"><h3>🔄 Đổi chỗ hai hộp</h3>
+<p class="hint">Python đổi chỗ rất nhanh chỉ với <code>a, b = b, a</code></p>
+<div class="boxes"><div class="box" style="background:var(--c)"><small>a</small><b id="va">10</b></div><div class="box" style="background:var(--a)"><small>b</small><b id="vb">20</b></div></div>
+<button class="btn g" onclick="swap()">Hoán đổi! 🔁</button></div>
+
+<div class="card"><h3>🍎 Bé đếm táo</h3>
+<p class="hint">Ban đầu có <code>x = 100</code> quả táo. Bấm nút để thay đổi nhé!</p>
+<div class="big">🍎 <span id="x">100</span></div>
+<button class="btn g" onclick="cal('+',50)">x += 50</button>
+<button class="btn" onclick="cal('-',20)">x -= 20</button>
+<button class="btn b" onclick="cal('*',2)">x *= 2</button>
+<button class="btn" style="background:#a56cf0;box-shadow:0 4px 0 #7b46c4" onclick="cal('/',5)">x //= 5</button>
+<button class="btn b" onclick="x=100;$('#x').textContent=100">↩ Làm lại</button>
+<div class="res" id="xl">Thử bấm các nút xem sao!</div></div>
+</section>
+
+<section id="s2">
+<div class="card"><span class="tag">📄 Bài tập gốc: BT2.py</span><br><button class="btn b" onclick="openCode('BT2.py')">💻 Xem &amp; chạy code BT2.py</button></div>
+<div class="card"><h3>🔮 Chữ "42" khác với số 42</h3>
+<p class="hint">Chữ thì ghép lại, số thì cộng được. Dùng <code>int()</code> để biến chữ thành số!</p>
+<label>Nhập một số<input type="text" id="st" value="42"></label><br>
+<button class="btn" onclick="txt()">"42" + "8" (chữ)</button>
+<button class="btn g" onclick="num()">int("42") + 8 (số)</button>
+<div class="res" id="r2a">Bấm một nút nhé!</div></div>
+
+<div class="card"><h3>✂️ Cắt đuôi số thập phân</h3>
+<p class="hint"><code>int(3.14159)</code> cắt bỏ phần sau dấu phẩy, không làm tròn đâu nha!</p>
+<label>Số thực<input type="number" id="pi" step="0.01" value="3.14159" oninput="cut()"></label>
+<div class="res" id="r2b"></div></div>
+
+<div class="card"><h3>⚖️ Đúng hay Sai? (bool)</h3>
+<p class="hint">Số 0, chữ rỗng, hộp rỗng là <b>False</b>. Còn lại là <b>True</b>. Hãy đoán rồi kiểm tra!</p>
+<div id="tf"></div>
+<button class="btn g" onclick="chkTF()">Kiểm tra ✅</button><div class="res" id="r2c" style="display:none"></div></div>
+
+<div class="card"><h3>⏰ Đổi giây thành giờ, phút, giây</h3>
+<label>Số giây<input type="number" id="sec" value="3725" oninput="sc()"></label>
+<div class="res" id="r2d"></div></div>
+</section>
+
+<section id="s3">
+<div class="card"><span class="tag">📄 Bài tập gốc: BT3.py</span><br><button class="btn b" onclick="openCode('BT3.py')">💻 Xem &amp; chạy code BT3.py</button></div>
+<div class="card"><h3>➕ Máy tính hai số</h3>
+<label>Số thứ nhất<input type="number" id="n1" value="12" oninput="c1()"></label>
+<label>Số thứ hai<input type="number" id="n2" value="4" oninput="c1()"></label>
+<div class="res" id="r3a"></div></div>
+
+<div class="card"><h3>⭕ Hình tròn</h3>
+<p class="hint">Dùng π ≈ 3,14159</p>
+<label>Bán kính<input type="number" id="rad" value="5" oninput="c2()"></label>
+<div class="res" id="r3b"></div></div>
+
+<div class="card"><h3>🏷️ Giảm giá</h3>
+<label>Giá gốc<input type="number" id="gg" value="50000" oninput="c3()"></label>
+<label>Giảm (%)<input type="number" id="pt" value="20" oninput="c3()"></label>
+<div class="res" id="r3c"></div></div>
+
+<div class="card"><h3>💱 Đổi tiền VNĐ sang USD</h3>
+<label>Số tiền VNĐ<input type="number" id="vnd" value="500000" oninput="c4()"></label>
+<label>Tỷ giá<input type="number" id="tg" value="25000" oninput="c4()"></label>
+<div class="res" id="r3d"></div></div>
+</section>
+
+<section id="s5"><div class="card"><h3>💻 Phòng Code: chạy bài tập Python thật</h3>
+<p class="hint">Các file .py nằm cùng thư mục. Chọn một bài, xem code rồi bấm chạy nhé!</p>
+<div id="bnav"></div><span class="tag" id="file"></span><h3 id="title" style="margin-top:0"></h3><p class="hint" id="desc"></p>
+<button class="btn" id="run">▶ Chạy bài này</button><button class="btn o" id="clear">🧹 Xoá kết quả</button>
+<h3>📜 Code</h3><pre id="code">Đang tải…</pre><h3>🖥️ Kết quả</h3><pre id="out"></pre></div></section>
+
+<section id="s4"><div class="card" id="qz"></div></section>
+</main>
+<div id="toast"></div>
+
+
+<script>
+function thieu(f){var d=document.createElement('div');d.style.cssText='background:#e63946;color:#fff;padding:12px;text-align:center;font-weight:800;position:relative;z-index:20';
+d.textContent='⚠️ Thiếu file '+f+' trong cùng thư mục với index.html. Hãy chép đủ tất cả file rồi tải lại trang (Ctrl+F5).';document.body.insertBefore(d,document.body.firstChild)}
+</script>
+<script>
+/* Chuyển tab: độc lập với các file khác nên luôn hoạt động */
+document.getElementById('nav').addEventListener('click',function(e){
+  var b=e.target.closest('button[data-t]');if(!b)return;
+  document.querySelectorAll('#nav button,main > section').forEach(function(x){x.classList.remove('on')});
+  b.classList.add('on');document.getElementById(b.dataset.t).classList.add('on');
+});
+</script>
+<script src="games.js" onerror="thieu('games.js')"></script>
+<script src="bai-tap.js" onerror="thieu('bai-tap.js')"></script>
+<script src="runner.js" onerror="thieu('runner.js')"></script>
+</body>
+</html>
